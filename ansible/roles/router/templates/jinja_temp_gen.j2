@@ -1,0 +1,22 @@
+hostname {{item.hostname}}
+!
+interface {{item.LoopbackInterface}}
+ip address {{item.LoopbackIPAddress}}
+!
+interface {{item.Interface1}}
+ip address {{item.address1}}
+no shut
+!
+{% if "Interface2" in item %}
+interface {{item.Interface2}}
+ip address {{item.address2}}
+no shut
+{% endif %}
+router ospf {{item.pID}}
+ network {{item.net1}} area 0
+ network {{item.net2}} area 0
+ network {{item.net3}} area 0
+{% if "net4" in item %}
+ network {{item.net4}} area 0
+{% endif %}
+!

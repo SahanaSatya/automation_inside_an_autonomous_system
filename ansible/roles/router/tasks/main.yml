@@ -1,0 +1,4 @@
+---
+- name: Generate config
+  template: src=/etc/ansible/roles/router/templates/jinja_temp_gen.j2 dest=/etc/ansible/config/{{item.hostname}}.txt
+  with_items: "{{ routers }}"
